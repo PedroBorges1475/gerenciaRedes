@@ -60,8 +60,7 @@
 			var ctx = document.getElementById('chart-area').getContext('2d');
 			window.myPie = new Chart(ctx, config);
 		};
-
-        var novaData= [];
+        var colorNames = Object.keys(window.chartColors);
 
         function ajaxCall(){    
             $.ajax({
@@ -70,7 +69,6 @@
                 data: "",
                 datatype: "html"
             }).done(function(respostaIn){
-				novaData[2] = respostaIn;
                 dataIn = respostaIn;
                 window.myPie.update();
             });
@@ -81,7 +79,6 @@
                 data: "",
                 datatype: "html"
             }).done(function(respostaNo){
-				novaData[1] = respostaNo;
                 dataNo = respostaNo;
 				window.myPie.update();
             });
@@ -93,24 +90,16 @@
                 datatype: "html"
             }).done(function(respostaError){
                 dataError = respostaError;
-				novaData[0] = respostaError;
 				window.myPie.update();
             });
-
-            config.data.datasets.data = novaData;
-            window.myPie.update();
-
-        }
+        };
 
         document.getElementById('atualizarDados').addEventListener('click', function() {
 				 ajaxCall();
                  window.myPie.update();
 			});
 
-
-
-
-		var colorNames = Object.keys(window.chartColors);
+	
 
 
 	</script>
