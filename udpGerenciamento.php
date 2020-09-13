@@ -71,7 +71,8 @@
                 datatype: "html"
             }).done(function(respostaIn){
 				novaData[2] = respostaIn;
-                window.myDoughnut.update();
+                dataIn = respostaIn;
+                window.myPie.update();
             });
 
             $.ajax({
@@ -81,7 +82,8 @@
                 datatype: "html"
             }).done(function(respostaNo){
 				novaData[1] = respostaNo;
-				window.myDoughnut.update();
+                dataNo = respostaNo;
+				window.myPie.update();
             });
 
 			$.ajax({
@@ -90,11 +92,13 @@
                 data: "",
                 datatype: "html"
             }).done(function(respostaError){
+                dataError = respostaError;
 				novaData[0] = respostaError;
-				window.myDoughnut.update();
+				window.myPie.update();
             });
 
-            config.data.dataset.data = novaData;
+            config.data.datasets.data = novaData;
+            window.myPie.update();
 
         }
 
